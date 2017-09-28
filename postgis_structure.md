@@ -1,4 +1,5 @@
 ```sql
+------ Structure SUP CNIG 2016
 SET search_path = public;
 
 -------------------- Gestionnaire
