@@ -35,7 +35,7 @@ select 'w:' || st_xmax(geom) ||
  from dep_31
  
  
- ------ Virtual layer écrit dans 4 champs l'emprise en wgs 84 d'une couche.
+ ------ Virtual layer get écrit dans 4 champs l'emprise en wgs 84 d'une couche.
 select st_maxx(st_transform(geometry,4326)) w, 
 		   st_miny(st_transform(geometry,4326)) s,
 		   st_minx(st_transform(geometry,4326)) e,
@@ -49,4 +49,18 @@ select st_xmax(st_transform(geom,4326)) w,
 		   st_xmin(st_transform(geom,4326)) e,
 		   st_ymax(st_transform(geom,4326)) n
  from dep_31
- ```
+
+
+------ QGIS Virtual layer Créer une couche de l'emprise
+select st_envelope(geom) from matable; -- Puis charger comme nouvelle couche
+
+
+------ Postgis layer Créer une couche de l'emprise
+create table bounds(
+	geom geometry(POLYGON,2154),
+	id serial PRIMARY KEY
+);
+INSERT INTO bounds
+select st_envelope(geom)
+ from matable;
+ ``` 
