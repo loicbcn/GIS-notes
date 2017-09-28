@@ -1,4 +1,5 @@
 ```bat
+rem batch pour peupler différentes tables
 CHCP 65001
 
 set servi=A7
