@@ -3,7 +3,7 @@ CHCP 65001
 
 set servi=A7
 set savpath=C:\Users\me\Documents\SUP\%servi%\130010747_%servi%_031_20170727\Donnees_geographiques
-set pgconn="PG:dbname='SUP' host='' port='5432' user='postgres' password='root'"
+set pgconn="PG:dbname='SUP' host='' port='5432' user='myuser' password='mypwd'"
 
 del "%savpath%\%servi%_ACTE_SUP.*"
 del "%savpath%\%servi%_GESTIONNAIRE_SUP.*"
