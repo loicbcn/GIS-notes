@@ -1,4 +1,5 @@
 ```python
+# A lancer depuis la console python de QGIS
 # Lance des unions successives.
 import processing;
 path = "C:/Users/ldonot/Documents/sig/PAC_PLUi_Lauragais/datas/rpg/81/decoupe/champ_harmonise/";
