@@ -13,4 +13,13 @@ WHERE ST_GeometryType(geom) = 'ST_MultiPolygon';
 ------ https://sqlite.org/datatype3.html
 select cast(ID_ILOT as text) id_ilot, geometry from rpg2009_31_epci
 select cast(substr(Num_ilot, 5) as text) id_ilot, geometry from rpg2010_31_epci
+
+
+------ QGIS VL: Récupérer les pertes
+select * from union_2009_2014 where geometry is not null and (
+(id_ilot is not null and id_ilot_2 is null and id_ilot_3 is null and id_ilot_4 is null and id_ilot_5 is null and id_ilot_6 is null)
+OR (id_ilot_2 is not null and id_ilot_3 is null and id_ilot_4 is null and id_ilot_5 is null and id_ilot_6 is null)
+OR (id_ilot_3 is not null and id_ilot_4 is null and id_ilot_5 is null and id_ilot_6 is null)
+OR (id_ilot_4 is not null and id_ilot_5 is null and id_ilot_6 is null)
+OR (id_ilot_5 is not null and id_ilot_6 is null));
 ```
