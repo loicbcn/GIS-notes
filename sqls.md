@@ -22,4 +22,11 @@ OR (id_ilot_2 is not null and id_ilot_3 is null and id_ilot_4 is null and id_ilo
 OR (id_ilot_3 is not null and id_ilot_4 is null and id_ilot_5 is null and id_ilot_6 is null)
 OR (id_ilot_4 is not null and id_ilot_5 is null and id_ilot_6 is null)
 OR (id_ilot_5 is not null and id_ilot_6 is null));
+
+
+------ QGIS VL: Liste des communes d'un epci
+select group_concat(c.INSEE_COMM) comms from comm_31 c
+inner join N_EPCI_ZSUP_031 epci ON st_within(st_centroid(c.geometry), epci.geometry)
+group by c.INSEE_DEPT;
+
 ```
