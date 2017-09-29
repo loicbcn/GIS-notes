@@ -60,6 +60,7 @@ create table bounds(
 	geom geometry(POLYGON,2154),
 	id serial PRIMARY KEY
 );
+
 INSERT INTO bounds
 select st_envelope(geom)
  from matable;
