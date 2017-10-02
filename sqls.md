@@ -40,4 +40,7 @@ create table rpg.france as
 ALTER TABLE rpg.france ADD PRIMARY KEY (id);
 CREATE INDEX france_gix ON rpg.france USING GIST (geom);
 
+------ Postgis exploser en entités simples
+select (st_dump(geom)).geom as the_geom from rpg.france
+
 ```
