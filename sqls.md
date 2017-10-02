@@ -33,9 +33,9 @@ group by c.INSEE_DEPT;
 ------ Postgis Dissolve geometrie dans une nouvelle table. (ici dans un schéma nommé rpg)
 ------ Fusion des départements
 create table rpg.france as
-select id, st_union(geom)::geometry(multipolygon, 2154) geom
-from (select 1 id, geom from rpg.dep) all_dep
-group by id;
+    select id, st_union(geom)::geometry(multipolygon, 2154) geom
+    from (select 1 id, geom from rpg.dep) all_dep
+    group by id;
 
 ALTER TABLE rpg.france ADD PRIMARY KEY (id);
 CREATE INDEX france_gix ON rpg.france USING GIST (geom);
