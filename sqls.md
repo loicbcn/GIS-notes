@@ -43,4 +43,13 @@ CREATE INDEX france_gix ON rpg.france USING GIST (geom);
 ------ Postgis exploser polygones multiples en entités simples
 select (st_dump(geom)).geom as the_geom from rpg.france
 
+
+------ Postgis, dissolve 2 couches
+SELECT st_union(u.geom) geom, MAX(u.t1),  MAX(u.t2) sd
+from (
+select l1.geom, titre t1, NULL t2	from layer_1 l1
+union
+select l2.geom, NULL t1, titre t2 from  layer_2 l2
+) u
+
 ```
