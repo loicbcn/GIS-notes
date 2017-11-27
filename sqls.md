@@ -52,4 +52,9 @@ union
 select l2.geom, NULL t1, titre t2 from  layer_2 l2
 ) u
 
+
+------ Postgis, créer des polygones à partir de points
+select polyg, st_convexhull((st_union(p.geom))) as geom from points p
+group by polyg
+
 ```
