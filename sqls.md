@@ -57,4 +57,10 @@ select l2.geom, NULL t1, titre t2 from  layer_2 l2
 select polyg, st_convexhull((st_union(p.geom))) as geom from points p
 group by polyg
 
+------ Virtual layer, plus courtes distances entre les entités de 2 couches (ici, points - lignes)
+select fid_icpe, geometry, min(l) l from (
+	SELECT  a.fid fid_route, ShortestLine(a.geometry, b.geometry) geometry, Length(ShortestLine(a.geometry, b.geometry)) l, b.fid fid_icpe FROM autoroutes a, icpe b 
+) dist 
+group by fid_icpe
+
 ```
