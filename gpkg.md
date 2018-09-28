@@ -1,5 +1,5 @@
 ```sql
--- Créer une table ou vue visible dans qgis
+-- Créer une table ou une vue visible dans qgis
 CREATE TABLE "isochrones300" ( 
     `fid` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
     `geom` POLYGON, `s3ic` TEXT ( 255 ), 
