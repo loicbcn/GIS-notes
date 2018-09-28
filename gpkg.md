@@ -1,5 +1,5 @@
 ```sql
--- Créer une table ou une vue visible dans qgis
+-- Créer une table ou une vue visible dans qgis (Pour une table de polygones nommée isochrones300)
 CREATE TABLE "isochrones300" ( 
     `fid` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
     `geom` POLYGON, `s3ic` TEXT ( 255 ), 
@@ -20,6 +20,7 @@ INSERT INTO `gpkg_contents`(`table_name`,`data_type`,`identifier`,`min_x`,`min_y
 INSERT INTO `gpkg_geometry_columns`(`table_name`,`column_name`,`geometry_type_name`,`srs_id`,`z`,`m`)
 VALUES ('isochrones300','geom','POLYGON',2154,0,0);
 
+-- Triggers visibles dans le dbmanager de QGIS
 CREATE TRIGGER "trigger_insert_feature_count_isochrones300" 
     AFTER INSERT ON "isochrones300" 
     BEGIN UPDATE gpkg_ogr_contents SET feature_count = feature_count + 1 
