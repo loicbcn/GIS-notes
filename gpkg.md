@@ -20,4 +20,16 @@ INSERT INTO `gpkg_contents`(`table_name`,`data_type`,`identifier`,`min_x`,`min_y
 INSERT INTO `gpkg_geometry_columns`(`table_name`,`column_name`,`geometry_type_name`,`srs_id`,`z`,`m`)
 VALUES ('isochrones300','geom','POLYGON',2154,0,0);
 
+CREATE TRIGGER "trigger_insert_feature_count_isochrones300" 
+    AFTER INSERT ON "isochrones300" 
+    BEGIN UPDATE gpkg_ogr_contents SET feature_count = feature_count + 1 
+    WHERE lower(table_name) = lower('isochrones300'); 
+END;
+
+CREATE TRIGGER "trigger_delete_feature_count_isochrones300" 
+    AFTER DELETE ON "isochrones300" 
+    BEGIN UPDATE gpkg_ogr_contents SET feature_count = feature_count - 1 
+    WHERE lower(table_name) = lower('isochrones300'); 
+END;
+
 ```
