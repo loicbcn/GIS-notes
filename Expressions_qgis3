@@ -1,0 +1,16 @@
+Récupérer les attributs d'une table, dans le composer par exemple:
+
+with_variable('tbdep',
+	array_foreach(
+		string_to_array(
+		  aggregate(
+			layer:='Départements_Fr_7c8132b8_7408_45f8_8bb3_e988ca935248',
+			aggregate:='concatenate',
+			expression:="INSEE_DEP",
+			concatenator:='@@',
+			order_by:="INSEE_DEP"), '@@'
+		), attributes(
+			get_feature('Départements_Fr_7c8132b8_7408_45f8_8bb3_e988ca935248', 'INSEE_DEP', @element))
+	),
+	array_foreach(@tbdep, map_get(@element,'INSEE_DEP'))
+)
