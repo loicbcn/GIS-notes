@@ -42,7 +42,9 @@ Les champs des 4 colonnes contiennent les données au format json, sous cette fo
 ```
 Dans le composer QGIS, pour l'emprise, les différents champs sont à renseigner: 
 ```js
-from_json("elem0")['emprise'][0]
+from_json("elem0")['emprise'][0] // pour xmin
+from_json("elem0")['emprise'][1] // pour ymin
+...
 ```
 Pour utiliser le nom dans une étiquette: 
 ```js
