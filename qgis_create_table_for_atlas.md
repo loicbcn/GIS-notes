@@ -12,7 +12,7 @@ La couche **"prefs_r76"** est issue de la couche chefs-lieux d'admin express de 
 Les données à passer à l'atlas, qui seront dans les 4 colonnes seront stockées en json, et contiendront le nom de la commune et l'emprise (xmin, ymin, xmax, ymax) à renseigner dans les propriétés de l'objet carte dans le composer.
 
 Voici la requête générant la table à utiliser dans l'atlas.
-
+Requête exécutée dans le dbmanager de QGIS - virtual layer
 ```sql
 with datas as (
 	select p.*, 
