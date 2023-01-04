@@ -40,9 +40,17 @@ Les champs des 4 colonnes contiennent les données au format json, sous cette fo
 ```json
 {"nom":"Mairie de Brive-la-Gaillarde","emprise":[583824.3,6451231.3,585824.3,6453231.3]}
 ```
-Dans le composer QGIS, pour l'emprise, les différents champs sont à renseigner: from_json("elem0")['emprise'][0] 
-Pour utiliser le nom dans une étiquette: [%from_json( "elem0" )['nom']%]
-
-Pour masquer les vignettes sans données (dernière page), dans rendu - opacité: case when "elem1" is null then 0 else 100 end
+Dans le composer QGIS, pour l'emprise, les différents champs sont à renseigner: 
+```js
+from_json("elem0")['emprise'][0]
+```
+Pour utiliser le nom dans une étiquette: 
+```js
+[%from_json( "elem0" )['nom']%]
+```
+Pour masquer les vignettes sans données (dernière page), dans rendu - opacité: 
+```js
+case when "elem1" is null then 0 else 100 end
+```
 
 
