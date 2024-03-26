@@ -37,7 +37,8 @@ select
 	id_fs,
 	st_point(latitude, longitude).st_transform('EPSG:4326','EPSG:2154') geometry, 
 	* EXCLUDE (id_fs, longitude, latitude)
-FROM read_csv('C:\donnees\maisons_france_services\2024\data\liste-fs-20240307.csv')) 
-to 'C:\donnees\maisons_france_services\2024\data\fs.gpkg'
+FROM
+	read_csv('C:\donnees\maisons_france_services\2024\data\liste-fs-20240307.csv')) 
+	to 'C:\donnees\maisons_france_services\2024\data\fs.gpkg'
 	WITH (FORMAT GDAL, DRIVER 'GPKG', LAYER_NAME 'structures', SRS 'EPSG:2154');
 ```
