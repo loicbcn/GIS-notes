@@ -30,10 +30,14 @@ where a.dossier = '15670422'
 
 -------------------------------------------
 ### csv -> gpkg avec changement de projection
+!!! st_point(lat, lon) in duckdb (https://duckdb.org/2023/04/28/spatial.html) ... but st_point(lon, lat) in postgis :/ (https://postgis.net/docs/ST_Point.html)
 ```sql
 copy(
-select id_fs, st_point(latitude, longitude).st_transform('EPSG:4326','EPSG:2154') geometry, 
-* EXCLUDE (id_fs, longitude, latitude)
+select
+	id_fs,
+	st_point(latitude, longitude).st_transform('EPSG:4326','EPSG:2154') geometry, 
+	* EXCLUDE (id_fs, longitude, latitude)
 FROM read_csv('C:\donnees\maisons_france_services\2024\data\liste-fs-20240307.csv')) 
-to 'C:\donnees\maisons_france_services\2024\data\fs.gpkg' WITH (FORMAT GDAL, DRIVER 'GPKG', LAYER_NAME 'structures', SRS 'EPSG:2154');
+to 'C:\donnees\maisons_france_services\2024\data\fs.gpkg'
+	WITH (FORMAT GDAL, DRIVER 'GPKG', LAYER_NAME 'structures', SRS 'EPSG:2154');
 ```
