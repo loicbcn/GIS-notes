@@ -1,4 +1,5 @@
 ### Créer un slug
+-> Enlever les caractères spéciaux d'une chaîne de caractères, ce qui peut aider pour comparer des chaînes entre elles.
 ```sql
 select lower(strip_accents(regexp_replace( 'L''attaque des "Clones" est arrivée', '["|''| ]+', '-', 'g')))
 ```
