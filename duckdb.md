@@ -4,6 +4,7 @@ select lower(strip_accents(regexp_replace( 'L''attaque des "Clones" est arrivée
 ```
 exemple:
 ```sql
+load spatial;
 with attr as (
 	SELECT dossier, appellation_zone,
 	lower(strip_accents(regexp_replace( appellation_zone, '["|''| ]+', '-', 'g'))) slug
