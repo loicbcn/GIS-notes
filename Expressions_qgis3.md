@@ -1,5 +1,5 @@
 ### Récupérer les attributs d'une table, dans le composer par exemple:
-```
+``` js
 with_variable('tbdep',
 	array_foreach(
 		string_to_array(
@@ -19,7 +19,7 @@ with_variable('tbdep',
 
 ### Expression régulière
 A partir de champs composés d'horaires (1 champ par jour de la semaine, sauf le dimanche), calculer des durées d'ouverture des locaux
-Le champs peuvent contenir des horaires sous ces formes:
+Les champs peuvent contenir des horaires sous ces formes:
 ```09:00 - 12:00 / 14:00 - 17:00```
 ```09:00 - 12:00```
 ```14:00 - 17:00```
