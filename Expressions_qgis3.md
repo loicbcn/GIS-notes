@@ -1,5 +1,5 @@
 ### Récupérer les attributs d'une table, dans le composer par exemple:
-
+```
 with_variable('tbdep',
 	array_foreach(
 		string_to_array(
@@ -14,7 +14,7 @@ with_variable('tbdep',
 	),
 	array_foreach(@tbdep, map_get(@element,'INSEE_DEP'))
 )
-
+```
 -------------------
 
 ### Expression régulière
@@ -30,7 +30,7 @@ avec parfois des erreurs
 L'expression suivante retourne la somme des intervales de temps en minutes.
 L'expression régulière envoi chaque horaire dans un groupe, et ```regexp_matches``` convertit chaque groupe en un élément de tableau.
 
-``` 
+``` js 
 array_sum(
 	with_variable(
 		'fields',
