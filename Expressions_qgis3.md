@@ -54,3 +54,34 @@ array_sum(
 	)
 )
 ```
+-------------------
+La même expression peut servir à créer un tableau json avec les jours ouverts, du type: [1,1,0.5,1,1,0] ... qui signifie ouvert toute la journée les lundi, mardi, jeudi, vendredi, la demi journée le mercredi et fermé le samedi.
+``` js
+to_json(
+		with_variable(
+		'fields',
+		array("h_lundi","h_mardi","h_mercredi","h_jeudi","h_vendredi","h_samedi"),
+			array_foreach(@fields, 
+				case when @element is not null then 
+					with_variable( 
+						'arr',
+						regexp_matches(@element, 
+						'(\\d{2}:\\d{2}) - (\\d{2}:\\d{2})(?:./.(\\d{2}:\\d{2}) - (\\d{2}:\\d{2}))?'
+						),
+						case 
+							when array_length(@arr) = 4 and @arr[0] = @arr[1] and @arr[2] != @arr[3] 
+								then 0.5
+							when array_length(@arr) = 2 and @arr[0] != @arr[1] 
+								and (to_int(substr(@arr[1],1,2))- to_int(substr(@arr[0],1,2))) > 6
+								then 1								
+							when array_length(@arr) = 2 and @arr[0] != @arr[1]  
+								then 0.5
+							when array_length(@arr) = 4 and @arr[0] != @arr[2] 
+								then 1
+							else 0 end
+					)
+				else 0 end
+			)
+	)
+)
+```
