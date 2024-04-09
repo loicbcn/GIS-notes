@@ -1,4 +1,13 @@
 ```sql
+--- Postgis to Geojson
+SELECT
+	json_build_object(
+		'type', 'FeatureCollection',
+		'features', json_agg(ST_AsGeoJSON(t.*)::json)
+	) res
+	FROM
+	matable AS t
+
 ------ Postgis tester validité géométrique
 SELECT st_isvalidreason(geom) as raison, st_isValidDetail(geom) as geometry
 FROM rpg."2014_11_epci"  WHERE not st_isvalid(geom);
