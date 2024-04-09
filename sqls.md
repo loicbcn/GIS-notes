@@ -5,8 +5,8 @@ SELECT
 		'type', 'FeatureCollection',
 		'features', json_agg(ST_AsGeoJSON(t.*)::json)
 	) res
-	FROM
-	matable AS t
+FROM
+matable AS t
 
 ------ Postgis tester validité géométrique
 SELECT st_isvalidreason(geom) as raison, st_isValidDetail(geom) as geometry
