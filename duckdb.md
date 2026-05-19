@@ -1,3 +1,14 @@
+### Requêter la valeur d'une clef json et obtenir un résultat sous forme de table
+Dans cet exemple, les données se trouvent dans une clef nommée "results" située à la racine du json.
+Le json est consultable ici:
+https://data.senat.fr/data/senateurs/ODSEN_GENERAL.json
+
+```sql
+SELECT x.*
+FROM read_json_auto('c:\temp\senateurs.json') t,
+UNNEST(t.results) AS u(x);
+```
+
 ### Créer un slug
 -> Enlever les caractères spéciaux d'une chaîne de caractères, ce qui peut aider pour comparer des chaînes entre elles.
 ```sql
