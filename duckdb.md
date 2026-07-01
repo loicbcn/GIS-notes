@@ -8,7 +8,7 @@ with test as(
 select * from test
 ```
 
-### Requêter la valeur d'une clef json et obtenir un résultat sous forme de table (autre méthode, qui ne peut pas se mettre dans un with)
+### Requêter la valeur d'une clef json et obtenir un résultat sous forme de table (autre méthode)
 Dans cet exemple, les données se trouvent dans une clef nommée "results" située à la racine du json.
 Le json est consultable ici:
 https://data.senat.fr/data/senateurs/ODSEN_GENERAL.json
